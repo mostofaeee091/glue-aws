@@ -6,7 +6,7 @@ FROM ubuntu:20.04
 ############################
 #####  CONFIG ZONE #########
 
-ENV APP_DB=
+ENV APP_DB=s
 ENV APP_DB_USER=
 ENV APP_DB_PASS=
 ENV DB_FILE=
