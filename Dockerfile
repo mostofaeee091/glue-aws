@@ -13,9 +13,7 @@ ENV DB_FILE=bahonbdc_ticket.sql
 
 ENV WEB_SERVER=3.110.186.96
 
-ENV GIT_REPO=https://team_cloudboost:ATBBz5Xswgg7WZdcHSy8rqcQMfjP6A5CA97F@bitbucket.org/appincubators/glue.git
-ENV GIT_BRANCH=Master
-ENV GIT_APP_FOLDER=.
+
 
 ############ END ###########
 
@@ -24,8 +22,8 @@ ENV GIT_APP_FOLDER=.
 
 WORKDIR /cloudboost
 
-COPY ./Entrypoint/* /cloudboost/
-COPY ./NGINX/* /cloudboost/nginx/
+COPY ./Entrypoint/* /glue-aws/
+COPY ./NGINX/* /glue-aws/nginx/
 
 
 ENV TZ=Asia/Dhaka \
@@ -52,7 +50,7 @@ RUN apt update -y; \
 
 # Confiure Web Server. we are using nginx as our web server.
 
-    cp /cloudboost/nginx/* /etc/nginx/sites-available/$WEB_SERVER.conf; \
+    cp /glue-aws/nginx/* /etc/nginx/sites-available/$WEB_SERVER.conf; \
     ln -s /etc/nginx/sites-available/$WEB_SERVER.conf /etc/nginx/sites-enabled/$WEB_SERVER.conf; \
     rm -rf /etc/nginx/sites-enabled/default; \
     sed -i "s/IP_ADDRESS_OR_DOMAIN/$WEB_SERVER/g" /etc/nginx/sites-enabled/$WEB_SERVER.conf; \
@@ -83,5 +81,5 @@ RUN apt update -y; \
 EXPOSE 80/tcp
 
 # Run Scripts to start nginx, mysql, phpfpm automatically on container boot
-RUN ["chmod", "+x", "/cloudboost/startup.sh"]
-ENTRYPOINT ["sh", "/cloudboost/startup.sh"]
+RUN ["chmod", "+x", "/glue-aws/startup.sh"]
+ENTRYPOINT ["sh", "/glue-aws/startup.sh"]
