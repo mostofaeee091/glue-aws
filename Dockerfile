@@ -6,12 +6,12 @@ FROM ubuntu:20.04
 ############################
 #####  CONFIG ZONE #########
 
-ENV APP_DB=s
-ENV APP_DB_USER=
-ENV APP_DB_PASS=
-ENV DB_FILE=
+ENV APP_DB=laravel
+ENV APP_DB_USER=laravel
+ENV APP_DB_PASS=laravel
+ENV DB_FILE=bahonbdc_ticket.sql
 
-ENV WEB_SERVER=
+ENV WEB_SERVER=3.110.186.96
 
 ENV GIT_REPO=https://team_cloudboost:ATBBz5Xswgg7WZdcHSy8rqcQMfjP6A5CA97F@bitbucket.org/appincubators/glue.git
 ENV GIT_BRANCH=Master
